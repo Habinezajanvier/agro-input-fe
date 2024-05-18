@@ -61,8 +61,8 @@ const Home = () => {
             </select>
           </div>
           <div>
-            <h3 className="">AvailableProducts</h3>
-            <div className="count">{data.count}</div>
+            <h3 className="">{loading ? "Loading..." : "AvailableProducts"}</h3>
+            <div className="count">{loading ? "..." : data.count}</div>
           </div>
         </div>
         <div className="product_list">

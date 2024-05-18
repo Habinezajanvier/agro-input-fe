@@ -38,3 +38,16 @@ interface PaginationDTO {
   pageSize: number;
   category?: number;
 }
+
+interface LoginData {
+  email: string;
+  password: string;
+}
+
+interface SignupData {
+  firstName: string;
+  lastName: string;
+  phoneNumber: string;
+  email: string;
+  password: string;
+}

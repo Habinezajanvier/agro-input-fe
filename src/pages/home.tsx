@@ -5,6 +5,7 @@ import NavBar from "../components/navBar";
 import { RootState } from "../store";
 import apis from "../store/apis";
 import { ArrowLeft, ArrowRight } from "../components/icons";
+import CustomModal from "../components/modal";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -118,6 +119,10 @@ const Home = () => {
             <ArrowRight />
           </button>
         </div>
+        <CustomModal
+          visible={true}
+          setVisible={() => console.log("==clicked here==>")}
+        />
       </div>
     </>
   );

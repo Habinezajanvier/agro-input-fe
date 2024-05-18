@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "./axios";
 
 class Api {
@@ -17,6 +17,42 @@ class Api {
       }
     }
   );
+
+  login = createAsyncThunk(
+    "login",
+    async (data: LoginData, { rejectWithValue }) => {
+      console.log({ data });
+      try {
+        const response = await axios.post(`/auth/login`, { ...data });
+        this.setAuthorisation(response.data.data.token);
+        return response.data;
+      } catch (error: any) {
+        return rejectWithValue({ error: error?.response?.data });
+      }
+    }
+  );
+
+  register = createAsyncThunk(
+    "register",
+    async (data: SignupData, { rejectWithValue }) => {
+      try {
+        const response = await axios.post(`/auth/signup`, { ...data });
+        this.setAuthorisation(response.data.data.token);
+        return response.data;
+      } catch (error: any) {
+        return rejectWithValue({ error: error?.response?.data });
+      }
+    }
+  );
+
+  resetAll = createAction("resetAll");
+
+  setAuthorisation = (token: string) => {
+    localStorage.setItem("x-token", token);
+    axios.defaults.headers.common = {
+      Authorization: "Bearer " + token,
+    };
+  };
 }
 
 const apis = new Api();

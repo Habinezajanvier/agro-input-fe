@@ -5,10 +5,15 @@ import NavBar from "../components/navBar";
 import { RootState } from "../store";
 import apis from "../store/apis";
 import { ArrowLeft, ArrowRight } from "../components/icons";
-import CustomModal from "../components/modal";
+import CustomModal from "../hoc/modal";
+import OrderComponent from "../components/orders";
 
 const Home = () => {
   const dispatch = useDispatch();
+  const [visible, setVisible] = useState<boolean>(false);
+  const [selectedProduct, setSelectedProduct] = useState<Product>(
+    {} as Product
+  );
   const [pageSetting, setPageSetting] = useState<PaginationDTO>({
     page: 1,
     pageSize: 5,
@@ -62,7 +67,14 @@ const Home = () => {
         </div>
         <div className="product_list">
           {data.content.map((item) => (
-            <div key={item.id} className="product_item">
+            <div
+              key={item.id}
+              className="product_item"
+              onClick={() => {
+                setVisible(true);
+                setSelectedProduct(item);
+              }}
+            >
               <div
                 className="product_avatar"
                 style={{
@@ -119,10 +131,9 @@ const Home = () => {
             <ArrowRight />
           </button>
         </div>
-        <CustomModal
-          visible={true}
-          setVisible={() => console.log("==clicked here==>")}
-        />
+        <CustomModal visible={visible} setVisible={() => setVisible(false)}>
+          <OrderComponent item={selectedProduct} />
+        </CustomModal>
       </div>
     </>
   );

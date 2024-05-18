@@ -325,5 +325,85 @@ select {
   left: 0;
   width: 100vw;
   height: 100vh;
+  display: flex;
+}
+
+.modal_backdrop {
+  flex-grow: 1;
+  height: 100vh;
   background: var(--light-gray);
+  opacity: 0.6;
+}
+
+.modal_content {
+  height: 100vh;
+  background: var(--light-gray);
+}
+
+.orders_component {
+  padding: 30px 12px;
+  min-width: 40vw;
+}
+
+.product_description {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 24px 0;
+}
+
+.calculator {
+  margin-top: 12px;
+  border: var(--gray) solid 2px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.calculator > h3 {
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--green);
+}
+
+.calculator > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.calculator > div > div {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.calculator > div input {
+  width: 30px;
+  height: 30px;
+  border: var(--gray) solid 1px;
+  font-size: 14px;
+  font-weight: "Cairo", sans-serif;
+  border-radius: 0;
+  margin-left: 6px;
+  text-align: center;
+  font-weight: 700;
+  /* outline: var(--green) solid 1px; */
+}
+
+.calculator > div input:focus {
+  border: var(--green) solid 1px;
+  outline: var(--green) solid 1px;
+}
+
+.order_button {
+  background: var(--green);
+  padding: 4px 0;
+  width: 100%;
+  border: none;
+  outline: none;
+  color: var(--white);
+  font-family: "Cairo", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
 }

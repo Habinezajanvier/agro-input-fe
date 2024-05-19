@@ -21,10 +21,11 @@ const Home = () => {
   });
 
   const { data, loading } = useSelector((state: RootState) => state.products);
+  const { success } = useSelector((state: RootState) => state.order);
 
   useEffect(() => {
     dispatch(apis.allProducts(pageSetting) as unknown as UnknownAction);
-  }, [dispatch, pageSetting]);
+  }, [dispatch, pageSetting, success]);
 
   const handleRowChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setPageSetting((setting) => ({

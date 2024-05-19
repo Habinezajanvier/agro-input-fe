@@ -3,6 +3,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   --green: #28a745;
   --gray: #6c757d;
   --gray-dark: #343a40;
@@ -21,6 +24,7 @@ a:active {
 .main {
   padding: 12px 36px;
   background: var(--white);
+  max-width: 1440px;
   /* max-width: 1170px; */
 }
 
@@ -352,20 +356,23 @@ select {
   margin: 24px 0;
 }
 
-.calculator {
+.calculator,
+.location {
   margin-top: 12px;
   border: var(--gray) solid 2px;
   padding: 24px;
   margin-bottom: 24px;
 }
 
-.calculator > h3 {
+.calculator > h3,
+.location > h3 {
   font-weight: 700;
   font-size: 24px;
   color: var(--green);
 }
 
-.calculator > div {
+.calculator > div,
+.location > div {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -406,4 +413,32 @@ select {
   font-weight: 600;
   font-size: 16px;
   cursor: pointer;
+  margin-top: 24px;
+}
+
+@media screen and (max-width: 800px) {
+  .head,
+  .product_list {
+    justify-content: center;
+  }
+
+  .product_item {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .head div {
+    flex-wrap: wrap;
+    justify-content: center !important;
+    /* width: 90% !important; */
+  }
+
+  select {
+    width: 90%;
+  }
+
+  .product_item {
+    width: 90%;
+  }
 }

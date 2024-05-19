@@ -23,8 +23,8 @@ const authSlice = createSlice({
       (state, action: PayloadAction<Payload<Record<"token", string>>>) => {
         state.loading = false;
         state.success = true;
-        state.message = action?.payload?.data?.message;
-        state.data = action?.payload?.data;
+        state.error = false;
+        state.message = action.payload.message;
       }
     );
     build.addCase(

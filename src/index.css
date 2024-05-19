@@ -25,6 +25,8 @@ a:active {
   padding: 12px 36px;
   background: var(--white);
   max-width: 1440px;
+  width: 96vw;
+  padding: 0 20px;
   /* max-width: 1170px; */
 }
 
@@ -417,6 +419,10 @@ select {
 }
 
 @media screen and (max-width: 800px) {
+  .title {
+    font-size: 24px;
+  }
+
   .head,
   .product_list {
     justify-content: center;

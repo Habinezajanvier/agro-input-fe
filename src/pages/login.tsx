@@ -48,7 +48,7 @@ const Login = () => {
         }
       }, 4000);
     }
-  }, [error, dispatch, success, navigate]);
+  }, [error, dispatch, success, navigate, message]);
 
   const handleInputChange =
     (setState: InputChangeState) =>
@@ -99,7 +99,7 @@ const Login = () => {
           </div>
         </div>
         <div className={success ? "auth_success" : "auth_error"}>
-          {error && <p>{message}</p>}
+          {(error || success) && <p>{message}</p>}
         </div>
         {/* <div className="auth_error">
           <p>message</p>

@@ -21,7 +21,6 @@ class Api {
   login = createAsyncThunk(
     "login",
     async (data: LoginData, { rejectWithValue }) => {
-      console.log({ data });
       try {
         const response = await axios.post(`/auth/login`, { ...data });
         this.setAuthorisation(response.data.data.token);
@@ -37,6 +36,19 @@ class Api {
     async (data: SignupData, { rejectWithValue }) => {
       try {
         const response = await axios.post(`/auth/signup`, { ...data });
+        this.setAuthorisation(response.data.data.token);
+        return response.data;
+      } catch (error: any) {
+        return rejectWithValue({ error: error?.response?.data });
+      }
+    }
+  );
+
+  orderPlacement = createAsyncThunk(
+    "orders",
+    async (data: OrderData, { rejectWithValue }) => {
+      try {
+        const response = await axios.post(`/orders`, { ...data });
         this.setAuthorisation(response.data.data.token);
         return response.data;
       } catch (error: any) {

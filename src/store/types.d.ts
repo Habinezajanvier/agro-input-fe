@@ -29,6 +29,20 @@ interface IState<T> {
   data: ReturnData<T>;
 }
 
+interface ILocation {
+  district: string;
+  sector: string;
+  village: string;
+}
+
+interface OrderData extends ILocation {
+  landSize: number;
+  products: {
+    id: number;
+    quantity: number;
+  }[];
+}
+
 interface ProductState extends IState<Product> {
   product: Product;
 }

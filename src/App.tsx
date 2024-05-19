@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/home";
 import Login from "./pages/login";
 import Signup from "./pages/signup";
@@ -11,22 +11,18 @@ import apis from "./store/apis";
 const token = localStorage.getItem("x-token");
 
 function App() {
-  const navigate = useNavigate();
   const chechInitialAuth = useCallback(async () => {
     try {
       if (token) {
-        console.log("==token==>", { token });
         const decodedToken = jwtDecode(token as string);
         if (decodedToken.exp! * 1000 > Date.now()) {
           apis.setAuthorisation(token as string);
         }
       }
     } catch (error) {
-      console.log({ error });
-      console.log({ token });
       // navigate("/", {});
     }
-  }, [navigate]);
+  }, []);
 
   useEffect(() => {
     chechInitialAuth();
